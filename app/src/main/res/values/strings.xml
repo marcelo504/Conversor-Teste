@@ -1,6 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Conversor</string>
 
     <string name="instructions">Informe a temperatura em graus F</string>
     <string name="action_settings">Settings</string>
+
+
+    <string-array name="cnvopt">
+        <item>Opcao 1</item>
+        <item>Opcao 2</item>
+        <item>Opcao 3</item>
+    </string-array>
+
 </resources>

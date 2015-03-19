@@ -1,20 +1,29 @@
 package br.edu.puccampinas.conversor;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Main extends ActionBarActivity implements View.OnClickListener{
+public class Main extends ActionBarActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
+
 
     //Objetos que serão manipulados.
     private EditText editTemperature;
     private Button btnConvert;
+
+    Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,13 @@ public class Main extends ActionBarActivity implements View.OnClickListener{
         editTemperature = (EditText)this.findViewById(R.id.editTemperature);
         btnConvert = (Button)this.findViewById(R.id.btnConvert);
         btnConvert.setOnClickListener(this);
+
+        //referencias para Spinner acho
+        spinner = (Spinner)this.findViewById(R.id.spinner);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.cnvopt,android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
 
@@ -53,7 +69,6 @@ public class Main extends ActionBarActivity implements View.OnClickListener{
     }
 
 
-
     //tratador de cliques.
     public void onClick(View v) {
         switch (v.getId()){
@@ -75,5 +90,17 @@ public class Main extends ActionBarActivity implements View.OnClickListener{
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView myText= (TextView) view;
+        Toast.makeText(this,"You Selected "+myText.getText(), Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
